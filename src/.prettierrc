@@ -9,6 +9,7 @@
     "importOrder": [
         "^react",
         "<THIRD_PARTY_MODULES>",
+        "^@/pages/(.*)$",
         "^@/components/(.*)$",
         "^@/utils/(.*)$",
         "^[./]"
