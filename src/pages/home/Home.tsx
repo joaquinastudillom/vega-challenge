@@ -1,6 +1,8 @@
 import { useCallback, useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import { cn } from '@/lib/utils';
+import { logout } from '@/services';
 import { Asset, Portfolio, Price } from '@/types';
 import axios from 'axios';
 import { format } from 'date-fns';
@@ -40,6 +42,7 @@ export const Home = () => {
     const [date, setDate] = useState<Date | undefined>(new Date());
     const [isAppLoading, setIsAppLoading] = useState(true);
     const [isAppError, setIsAppError] = useState(false);
+    const navigate = useNavigate();
 
     const fetchInitialData = async () => {
         try {
@@ -121,6 +124,16 @@ export const Home = () => {
         </>
     ) : (
         <div>
+            <Button
+                className="absolute right-6"
+                variant="destructive"
+                onClick={() => {
+                    logout();
+                    navigate('/');
+                }}
+            >
+                Log out
+            </Button>
             <h2 className="font-semibold tracking-tight text-3xl mb-3">Historical</h2>
 
             <div className=" mb-6">
