@@ -1,20 +1,19 @@
 import { useCallback, useEffect, useState } from 'react';
 
+import { cn } from '@/lib/utils';
 import { Asset, Portfolio, Price } from '@/types';
 import axios from 'axios';
+import { format } from 'date-fns';
+import { Calendar as CalendarIcon } from 'lucide-react';
 
 import { PortfolioDonutChart } from '@/components/portfolio-donut-chart';
 import { PortfolioHistoricalChart } from '@/components/portfolio-historical-chart';
 import { PortfolioTable } from '@/components/portfolio-table';
-import {
-    Card,
-    CardContent,
-    CardDescription,
-    CardFooter,
-    CardHeader,
-    CardTitle
-} from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
+import { Calendar } from '@/components/ui/calendar';
+import { Card, CardContent, CardFooter } from '@/components/ui/card';
 import { Label } from '@/components/ui/label';
+import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 
@@ -33,6 +32,7 @@ export const Home = () => {
     });
     const [portfolioHistoricalData, setPortfolioHistoricalData] = useState<Portfolio[]>([]);
     const [viewType, setViewType] = useState(View.ASSET);
+    const [date, setDate] = useState<Date | undefined>(new Date());
 
     const fetchAssets = async () => {
         try {
@@ -132,12 +132,12 @@ export const Home = () => {
             </div>
 
             <h2 className="font-semibold tracking-tight text-white text-3xl mb-3">Graphs</h2>
-            <div>
+            <div className="flex gap-4 mb-4">
                 <RadioGroup
                     defaultValue={viewType}
                     onValueChange={type => setViewType(type as View)}
                 >
-                    <div className="flex gap-2 capitalize bg-white p-2 w-fit rounded-lg absolute right-6">
+                    <div className="flex gap-2 capitalize bg-white p-2 w-fit rounded-lg">
                         <div className="flex items-center space-x-2">
                             <RadioGroupItem value={View.ASSET} id={View.ASSET} />
                             <Label htmlFor={View.ASSET}>{View.ASSET}</Label>
@@ -148,6 +148,24 @@ export const Home = () => {
                         </div>
                     </div>
                 </RadioGroup>
+
+                <Popover>
+                    <PopoverTrigger asChild>
+                        <Button
+                            variant={'outline'}
+                            className={cn(
+                                'w-[240px] justify-start text-left font-normal',
+                                !date && 'text-muted-foreground'
+                            )}
+                        >
+                            <CalendarIcon />
+                            {date ? format(date, 'PPP') : <span>Pick a date</span>}
+                        </Button>
+                    </PopoverTrigger>
+                    <PopoverContent className="w-auto p-0" align="start">
+                        <Calendar mode="single" selected={date} onSelect={setDate} initialFocus />
+                    </PopoverContent>
+                </Popover>
             </div>
 
             <Tabs defaultValue="donut">
