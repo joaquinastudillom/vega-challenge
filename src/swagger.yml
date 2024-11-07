@@ -1,0 +1,130 @@
+openapi: 3.0.3
+info:
+    title: Vega API
+    description: Vega FrontEnd coding task
+    version: 1.0.0
+
+paths:
+    /assets:
+        get:
+            summary: Get all assets
+            description: Fetch information about all available assets
+            operationId: getAssets
+            responses:
+                '200':
+                    description: Successful operation
+                    content:
+                        application/json:
+                            schema:
+                                type: array
+                                items:
+                                    $ref: '#/components/schemas/Asset'
+
+    /prices:
+        get:
+            summary: Get asset prices
+            description: Fetch list of asset prices
+            operationId: getPrices
+            parameters:
+                - name: asset
+                  in: query
+                  description: Asset filter
+                  required: false
+                  explode: true
+                  schema:
+                      type: string
+                - name: asOf
+                  in: query
+                  description: Timestamp of the price
+                  required: false
+                  explode: true
+                  schema:
+                      type: string
+                      format: date
+            responses:
+                '200':
+                    description: Successful operation
+                    content:
+                        application/json:
+                            schema:
+                                type: array
+                                items:
+                                    $ref: '#/components/schemas/Price'
+
+    /portfolios:
+        get:
+            summary: Get list of all investor positions
+            description: Fetch list of positions
+            operationId: getPortfolio
+            responses:
+                '200':
+                    description: Successful operation
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Portfolio'
+
+components:
+    schemas:
+        Portfolio:
+            type: object
+            properties:
+                id:
+                    type: string
+                    format: uuid
+                asOf:
+                    type: string
+                    format: date-time
+                positions:
+                    type: array
+                    items:
+                        $ref: '#/components/schemas/Position'
+
+        Position:
+            type: object
+            properties:
+                id:
+                    type: integer
+                    format: int64
+                    example: 10
+                asset:
+                    type: string
+                    format: uuid
+                quantity:
+                    type: integer
+                    format: int32
+                    example: 7
+                asOf:
+                    type: string
+                    format: date-time
+                price:
+                    type: integer
+                    format: int32
+                    example: 7
+
+        Price:
+            type: object
+            properties:
+                id:
+                    type: string
+                    format: uuid
+                asset:
+                    type: string
+                    example: APPL
+                price:
+                    type: integer
+                    format: int32
+                    example: 290.32
+
+        Asset:
+            type: object
+            properties:
+                id:
+                    type: string
+                    format: uuid
+                name:
+                    type: string
+                    example: APPL
+                type:
+                    type: string
+                    example: stock|crypto|fiat

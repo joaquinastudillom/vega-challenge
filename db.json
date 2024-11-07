@@ -1,0 +1,296 @@
+{
+  "assets": [
+    { "id": "1", "name": "APPL", "type": "stock" },
+    { "id": "2", "name": "BTC", "type": "crypto" },
+    { "id": "3", "name": "ETH", "type": "crypto" },
+    { "id": "4", "name": "USD", "type": "fiat" }
+  ],
+  "portfolios": {
+    "id": "123",
+    "asOf": "2023-01-01T00:00:00Z",
+    "positions": [
+      {
+        "id": 1,
+        "asset": "1",
+        "quantity": 10,
+        "asOf": "2023-01-01T00:00:00Z",
+        "price": 150
+      },
+      {
+        "id": 2,
+        "asset": "2",
+        "quantity": 0.5,
+        "asOf": "2023-01-01T00:00:00Z",
+        "price": 30000
+      },
+      {
+        "id": 3,
+        "asset": "3",
+        "quantity": 1.2,
+        "asOf": "2023-01-01T00:00:00Z",
+        "price": 2000
+      },
+      {
+        "id": 4,
+        "asset": "4",
+        "quantity": 1000,
+        "asOf": "2023-01-01T00:00:00Z",
+        "price": 1
+      }
+    ]
+  },
+  "portfolio": [
+    {
+      "asOf": "2023-01-13",
+      "positions": [
+        { "asset": 2, "quantity": 1, "price": 45000 },
+        { "asset": 1, "quantity": 10, "price": 150 }
+      ]
+    },
+    {
+      "asOf": "2023-02-01",
+      "positions": [
+        { "asset": 2, "quantity": 1, "price": 47000 },
+        { "asset": 1, "quantity": 10, "price": 155 }
+      ]
+    },
+    {
+      "asOf": "2023-03-01",
+      "positions": [
+        { "asset": 2, "quantity": 1, "price": 43000 },
+        { "asset": 1, "quantity": 10, "price": 160 }
+      ]
+    },
+    {
+      "asOf": "2023-04-01",
+      "positions": [
+        { "asset": 2, "quantity": 1, "price": 48000 },
+        { "asset": 1, "quantity": 10, "price": 165 }
+      ]
+    },
+    {
+      "asOf": "2023-05-01",
+      "positions": [
+        { "asset": 2, "quantity": 1, "price": 46000 },
+        { "asset": 1, "quantity": 10, "price": 170 }
+      ]
+    },
+    {
+      "asOf": "2023-06-01",
+      "positions": [
+        { "asset": 2, "quantity": 1, "price": 47000 },
+        { "asset": 1, "quantity": 10, "price": 168 }
+      ]
+    },
+    {
+      "asOf": "2023-07-01",
+      "positions": [
+        { "asset": 2, "quantity": 1, "price": 44000 },
+        { "asset": 1, "quantity": 10, "price": 172 }
+      ]
+    },
+    {
+      "asOf": "2023-08-01",
+      "positions": [
+        { "asset": 2, "quantity": 1, "price": 45000 },
+        { "asset": 1, "quantity": 10, "price": 180 }
+      ]
+    },
+    {
+      "asOf": "2023-09-01",
+      "positions": [
+        { "asset": 2, "quantity": 1, "price": 48000 },
+        { "asset": 1, "quantity": 10, "price": 175 }
+      ]
+    },
+    {
+      "asOf": "2023-10-01",
+      "positions": [
+        { "asset": 2, "quantity": 1, "price": 50000 },
+        { "asset": 1, "quantity": 10, "price": 178 }
+      ]
+    },
+    {
+      "asOf": "2023-11-01",
+      "positions": [
+        { "asset": 2, "quantity": 1, "price": 52000 },
+        { "asset": 1, "quantity": 10, "price": 180 }
+      ]
+    },
+    {
+      "asOf": "2023-12-01",
+      "positions": [
+        { "asset": 2, "quantity": 1, "price": 51000 },
+        { "asset": 1, "quantity": 10, "price": 185 }
+      ]
+    },
+    {
+      "asOf": "2024-01-01",
+      "positions": [
+        { "asset": 2, "quantity": 1, "price": 53000 },
+        { "asset": 1, "quantity": 10, "price": 190 }
+      ]
+    },
+    {
+      "asOf": "2024-02-01",
+      "positions": [
+        { "asset": 2, "quantity": 1, "price": 54000 },
+        { "asset": 1, "quantity": 10, "price": 195 }
+      ]
+    },
+    {
+      "asOf": "2024-03-01",
+      "positions": [
+        { "asset": 2, "quantity": 1, "price": 56000 },
+        { "asset": 1, "quantity": 10, "price": 198 }
+      ]
+    },
+    {
+      "asOf": "2024-04-01",
+      "positions": [
+        { "asset": 2, "quantity": 1, "price": 55000 },
+        { "asset": 1, "quantity": 10, "price": 200 }
+      ]
+    },
+    {
+      "asOf": "2024-05-01",
+      "positions": [
+        { "asset": 2, "quantity": 1, "price": 54000 },
+        { "asset": 1, "quantity": 10, "price": 202 }
+      ]
+    },
+    {
+      "asOf": "2024-06-01",
+      "positions": [
+        { "asset": 2, "quantity": 1, "price": 53000 },
+        { "asset": 1, "quantity": 10, "price": 205 }
+      ]
+    },
+    {
+      "asOf": "2024-07-01",
+      "positions": [
+        { "asset": 2, "quantity": 1, "price": 52000 },
+        { "asset": 1, "quantity": 10, "price": 210 }
+      ]
+    },
+    {
+      "asOf": "2024-08-01",
+      "positions": [
+        { "asset": 2, "quantity": 1, "price": 51000 },
+        { "asset": 1, "quantity": 10, "price": 215 }
+      ]
+    },
+    {
+      "asOf": "2024-09-01",
+      "positions": [
+        { "asset": 2, "quantity": 1, "price": 50000 },
+        { "asset": 1, "quantity": 10, "price": 220 }
+      ]
+    },
+    {
+      "asOf": "2024-10-01",
+      "positions": [
+        { "asset": 2, "quantity": 1, "price": 49000 },
+        { "asset": 1, "quantity": 10, "price": 225 }
+      ]
+    },
+    {
+      "asOf": "2024-11-01",
+      "positions": [
+        { "asset": 2, "quantity": 1, "price": 48000 },
+        { "asset": 1, "quantity": 10, "price": 230 }
+      ]
+    },
+    {
+      "asOf": "2024-12-01",
+      "positions": [
+        { "asset": 2, "quantity": 1, "price": 47000 },
+        { "asset": 1, "quantity": 10, "price": 235 }
+      ]
+    },
+    {
+      "asOf": "2025-01-01",
+      "positions": [
+        { "asset": 2, "quantity": 1, "price": 46000 },
+        { "asset": 1, "quantity": 10, "price": 240 }
+      ]
+    },
+    {
+      "asOf": "2025-02-01",
+      "positions": [
+        { "asset": 2, "quantity": 1, "price": 45000 },
+        { "asset": 1, "quantity": 10, "price": 245 }
+      ]
+    },
+    {
+      "asOf": "2025-03-01",
+      "positions": [
+        { "asset": 2, "quantity": 1, "price": 44000 },
+        { "asset": 1, "quantity": 10, "price": 250 }
+      ]
+    },
+    {
+      "asOf": "2025-04-01",
+      "positions": [
+        { "asset": 2, "quantity": 1, "price": 43000 },
+        { "asset": 1, "quantity": 10, "price": 255 }
+      ]
+    },
+    {
+      "asOf": "2025-05-01",
+      "positions": [
+        { "asset": 2, "quantity": 1, "price": 42000 },
+        { "asset": 1, "quantity": 10, "price": 260 }
+      ]
+    },
+    {
+      "asOf": "2025-06-01",
+      "positions": [
+        { "asset": 2, "quantity": 1, "price": 41000 },
+        { "asset": 1, "quantity": 10, "price": 265 }
+      ]
+    },
+    {
+      "asOf": "2025-07-01",
+      "positions": [
+        { "asset": 2, "quantity": 1, "price": 40000 },
+        { "asset": 1, "quantity": 10, "price": 270 }
+      ]
+    },
+    {
+      "asOf": "2025-08-01",
+      "positions": [
+        { "asset": 2, "quantity": 1, "price": 39000 },
+        { "asset": 1, "quantity": 10, "price": 275 }
+      ]
+    },
+    {
+      "asOf": "2025-09-01",
+      "positions": [
+        { "asset": 2, "quantity": 1, "price": 38000 },
+        { "asset": 1, "quantity": 10, "price": 280 }
+      ]
+    },
+    {
+      "asOf": "2025-10-01",
+      "positions": [
+        { "asset": 2, "quantity": 1, "price": 37000 },
+        { "asset": 1, "quantity": 10, "price": 285 }
+      ]
+    },
+    {
+      "asOf": "2025-11-01",
+      "positions": [
+        { "asset": 2, "quantity": 1, "price": 36000 },
+        { "asset": 1, "quantity": 10, "price": 290 }
+      ]
+    },
+    {
+      "asOf": "2025-12-01",
+      "positions": [
+        { "asset": 2, "quantity": 1, "price": 35000 },
+        { "asset": 1, "quantity": 10, "price": 295 }
+      ]
+    }
+  ]
+}
