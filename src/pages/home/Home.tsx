@@ -24,7 +24,7 @@ export const Home = () => {
         <Tabs defaultValue="donut" className="w-[400px]">
             <TabsList>
                 <TabsTrigger value="donut">Donut Chart</TabsTrigger>
-                <TabsTrigger value="table">Password</TabsTrigger>
+                <TabsTrigger value="table">Table</TabsTrigger>
             </TabsList>
             <TabsContent value="donut">
                 <PortfolioDonutChart portfolio={portfolio} assets={assets} />
