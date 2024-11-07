@@ -20,6 +20,6 @@ export type Asset = {
 };
 
 export type PortfolioViewPropsType = {
-    portfolio: Portfolio;
-    assets: Asset[];
+    view: ViewType;
+    data: any[];
 };
