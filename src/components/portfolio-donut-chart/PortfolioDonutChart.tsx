@@ -14,7 +14,7 @@ import { ChartContainer, ChartTooltip, ChartTooltipContent } from '@/components/
 export const PortfolioDonutChart = ({ data, view }: PortfolioViewPropsType) => {
     return (
         <Card className="flex flex-col">
-            <CardHeader className=" items-center pb-0">
+            <CardHeader>
                 <CardTitle>Portfolio Balance Donut Chart</CardTitle>
                 <CardDescription>By {view}</CardDescription>
             </CardHeader>

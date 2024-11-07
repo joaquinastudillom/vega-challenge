@@ -64,7 +64,7 @@ export const Home = () => {
                 </div>
             </RadioGroup>
 
-            <Tabs defaultValue="donut" className="w-[400px]">
+            <Tabs defaultValue="donut">
                 <TabsList>
                     <TabsTrigger value="donut">Donut Chart</TabsTrigger>
                     <TabsTrigger value="table">Table</TabsTrigger>
@@ -73,7 +73,7 @@ export const Home = () => {
                     <PortfolioDonutChart view={viewType} data={data} />
                 </TabsContent>
                 <TabsContent value="table">
-                    <PortfolioTable />
+                    <PortfolioTable view={viewType} data={data} />
                 </TabsContent>
             </Tabs>
         </>
