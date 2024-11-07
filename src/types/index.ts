@@ -23,3 +23,9 @@ export type PortfolioViewPropsType = {
     view: ViewType;
     data: any[];
 };
+
+export type Price = {
+    id: string;
+    asset: string;
+    price: number;
+};
