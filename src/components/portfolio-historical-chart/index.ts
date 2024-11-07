@@ -1,0 +1,1 @@
+export { PortfolioHistoricalChart } from './PortfolioHistoricalChart';

@@ -292,5 +292,28 @@
         { "asset": 1, "quantity": 10, "price": 295 }
       ]
     }
+  ],
+
+  "prices": [
+    {
+      "id": "1",
+      "asset": "APPL",
+      "price": 145.32
+    },
+    {
+      "id": "2",
+      "asset": "BTC",
+      "price": 51000.75
+    },
+    {
+      "id": "3",
+      "asset": "ETH",
+      "price": 4200.6
+    },
+    {
+      "id": "4",
+      "asset": "USD",
+      "price": 1.0
+    }
   ]
 }
