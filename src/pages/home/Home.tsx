@@ -5,22 +5,27 @@ import { Asset, Portfolio, Price } from '@/types';
 import axios from 'axios';
 import { format } from 'date-fns';
 import { Calendar as CalendarIcon } from 'lucide-react';
+import { AlertCircle } from 'lucide-react';
 
 import { PortfolioDonutChart } from '@/components/portfolio-donut-chart';
 import { PortfolioHistoricalChart } from '@/components/portfolio-historical-chart';
 import { PortfolioTable } from '@/components/portfolio-table';
+import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
 import { Button } from '@/components/ui/button';
 import { Calendar } from '@/components/ui/calendar';
 import { Card, CardContent, CardFooter } from '@/components/ui/card';
 import { Label } from '@/components/ui/label';
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
+import { Skeleton } from '@/components/ui/skeleton';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 
 enum View {
     CLASS = 'class',
     ASSET = 'asset'
 }
+
+const delay = (ms: number | undefined) => new Promise(resolve => setTimeout(resolve, ms));
 
 export const Home = () => {
     const [prices, setPrices] = useState<Price[]>([]);
@@ -33,48 +38,36 @@ export const Home = () => {
     const [portfolioHistoricalData, setPortfolioHistoricalData] = useState<Portfolio[]>([]);
     const [viewType, setViewType] = useState(View.ASSET);
     const [date, setDate] = useState<Date | undefined>(new Date());
+    const [isAppLoading, setIsAppLoading] = useState(true);
+    const [isAppError, setIsAppError] = useState(false);
 
-    const fetchAssets = async () => {
+    const fetchInitialData = async () => {
         try {
-            const { data } = await axios.get('http://localhost:3001/assets');
-            setAssets(data);
-        } catch (error) {
-            console.error(error);
-        }
-    };
+            const [
+                { data: assetsData },
+                { data: portfolioData },
+                { data: portfolioHistoricalData },
+                { data: prices }
+            ] = await Promise.all([
+                axios.get('http://localhost:3001/assets'),
+                axios.get('http://localhost:3001/portfolios'),
+                axios.get('http://localhost:3001/portfolio'),
+                delay(1000).then(() => axios.get('http://localhost:3001/prices'))
+            ]);
 
-    const fetchPortfolioData = async () => {
-        try {
-            const { data } = await axios.get('http://localhost:3001/portfolios');
-            setPorfolioData(data);
-        } catch (error) {
-            console.error(error);
-        }
-    };
-
-    const fetchPortfolioHistoricalData = async () => {
-        try {
-            const { data } = await axios.get('http://localhost:3001/portfolio');
-            setPortfolioHistoricalData(data);
-        } catch (error) {
-            console.error(error);
-        }
-    };
-
-    const fetchPrices = async () => {
-        try {
-            const { data } = await axios.get('http://localhost:3001/prices');
-            setPrices(data);
-        } catch (error) {
-            console.error(error);
+            setAssets(assetsData);
+            setPorfolioData(portfolioData);
+            setPortfolioHistoricalData(portfolioHistoricalData);
+            setPrices(prices);
+        } catch (e) {
+            setIsAppError(true);
+        } finally {
+            setIsAppLoading(false);
         }
     };
 
     useEffect(() => {
-        fetchAssets();
-        fetchPortfolioData();
-        fetchPortfolioHistoricalData();
-        fetchPrices();
+        fetchInitialData();
     }, []);
 
     const chartData = useCallback(() => {
@@ -101,18 +94,41 @@ export const Home = () => {
 
     const data = chartData();
 
-    return (
+    if (isAppError) {
+        return (
+            <Alert variant="destructive">
+                <AlertCircle className="h-4 w-4" />
+                <AlertTitle>Error</AlertTitle>
+                <AlertDescription>Something went wrong please reload the page</AlertDescription>
+            </Alert>
+        );
+    }
+
+    return isAppLoading ? (
+        <>
+            <div className="flex flex-col space-y-3 mb-3">
+                <Skeleton className="h-[50px] w-[250px] rounded-xl" />
+                <div className="space-y-2">
+                    <Skeleton className="h-4 h-[350px]" />
+                </div>
+            </div>
+            <div className="flex flex-col space-y-3">
+                <Skeleton className="h-[50px] w-[250px] rounded-xl" />
+                <div className="space-y-2">
+                    <Skeleton className="h-4 h-[150px]" />
+                </div>
+            </div>
+        </>
+    ) : (
         <div>
-            <h2 className="font-semibold tracking-tight text-white text-3xl mb-3">Historical</h2>
+            <h2 className="font-semibold tracking-tight text-3xl mb-3">Historical</h2>
 
             <div className=" mb-6">
                 <PortfolioHistoricalChart data={portfolioHistoricalGraphData} />
             </div>
 
             <div>
-                <h2 className="font-semibold tracking-tight text-white text-3xl mb-3">
-                    Current Price
-                </h2>
+                <h2 className="font-semibold tracking-tight text-3xl mb-3">Current Price</h2>
 
                 <Card className="flex flex-col mb-6">
                     <CardContent className="flex-1 pb-0">
@@ -131,7 +147,7 @@ export const Home = () => {
                 </Card>
             </div>
 
-            <h2 className="font-semibold tracking-tight text-white text-3xl mb-3">Graphs</h2>
+            <h2 className="font-semibold tracking-tight text-3xl mb-3">Graphs</h2>
             <div className="flex gap-4 mb-4">
                 <RadioGroup
                     defaultValue={viewType}
