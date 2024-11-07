@@ -1,6 +1,6 @@
 import { useCallback, useState } from 'react';
 
-import { Asset, Portfolio } from '@/types';
+import { PortfolioViewPropsType } from '@/types';
 import { Cell, Legend, Pie, PieChart } from 'recharts';
 
 import {
@@ -20,12 +20,7 @@ enum View {
     ASSET = 'asset'
 }
 
-interface PortfolioDonutChartProps {
-    portfolio: Portfolio;
-    assets: Asset[];
-}
-
-export const PortfolioDonutChart = ({ portfolio, assets }: PortfolioDonutChartProps) => {
+export const PortfolioDonutChart = ({ portfolio, assets }: PortfolioViewPropsType) => {
     const [viewType, setViewType] = useState(View.ASSET);
 
     const chartData = useCallback(() => {

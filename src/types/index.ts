@@ -18,3 +18,8 @@ export type Asset = {
     name: string;
     type: string;
 };
+
+export type PortfolioViewPropsType = {
+    portfolio: Portfolio;
+    assets: Asset[];
+};
