@@ -47,7 +47,7 @@ export const PortfolioDonutChart = ({ portfolio, assets }: PortfolioDonutChartPr
 
     return (
         <Card className="flex flex-col">
-            <CardHeader className="items-center pb-0">
+            <CardHeader className="relative items-center pb-0">
                 <RadioGroup
                     defaultValue={viewType}
                     onValueChange={type => setViewType(type as View)}
