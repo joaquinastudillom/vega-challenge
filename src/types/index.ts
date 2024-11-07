@@ -1,0 +1,20 @@
+export type ViewType = 'class' | 'asset';
+
+export type Position = {
+    id: number;
+    asset: string;
+    quantity: number;
+    price: number;
+};
+
+export type Portfolio = {
+    id: string;
+    asOf: string;
+    positions: Position[];
+};
+
+export type Asset = {
+    id: string;
+    name: string;
+    type: string;
+};
